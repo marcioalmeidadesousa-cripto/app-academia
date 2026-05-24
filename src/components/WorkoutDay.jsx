@@ -12,7 +12,6 @@ const DAY_FULL = {
   Qui: 'Quinta',
   Sex: 'Sexta',
   Sáb: 'Sábado',
-  Dom: 'Domingo',
 }
 
 export default function WorkoutDay({

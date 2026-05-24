@@ -9,7 +9,7 @@ import AdminPanel from './components/AdminPanel'
 import logo from './assets/logo.svg'
 import styles from './App.module.css'
 
-const DAYS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
+const DAYS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
 const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL
 
 function buildEmptyWorkouts() {
@@ -21,7 +21,7 @@ export default function App() {
   const [dataLoading, setDataLoading] = useState(false)
   const [showAdmin, setShowAdmin] = useState(false)
   const [selectedDay, setSelectedDay] = useState(() => {
-    const map = [6, 0, 1, 2, 3, 4, 5]
+    const map = [5, 0, 1, 2, 3, 4, 5]
     return DAYS[map[new Date().getDay()]]
   })
   const [workouts, setWorkouts] = useState(buildEmptyWorkouts)
