@@ -5,10 +5,12 @@ import { useAuth } from './hooks/useAuth'
 import DayTabs from './components/DayTabs'
 import WorkoutDay from './components/WorkoutDay'
 import AuthScreen from './components/AuthScreen'
+import AdminPanel from './components/AdminPanel'
 import logo from './assets/logo.svg'
 import styles from './App.module.css'
 
 const DAYS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
+const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL
 
 function buildEmptyWorkouts() {
   return DAYS.reduce((acc, day) => ({ ...acc, [day]: [] }), {})
@@ -17,6 +19,7 @@ function buildEmptyWorkouts() {
 export default function App() {
   const { user, loading: authLoading } = useAuth()
   const [dataLoading, setDataLoading] = useState(false)
+  const [showAdmin, setShowAdmin] = useState(false)
   const [selectedDay, setSelectedDay] = useState(() => {
     const map = [6, 0, 1, 2, 3, 4, 5]
     return DAYS[map[new Date().getDay()]]
@@ -139,6 +142,8 @@ export default function App() {
     )
   }
 
+  const isAdmin = user?.email === ADMIN_EMAIL
+
   return (
     <div className={styles.app}>
       <header className={styles.header}>
@@ -149,6 +154,11 @@ export default function App() {
           <h1 className={styles.title}>MSA Academia</h1>
           <span className={styles.subtitle}>Meu Treino</span>
         </div>
+        {isAdmin && (
+          <button className={styles.adminBtn} onClick={() => setShowAdmin(true)} title="Administração">
+            ⚙
+          </button>
+        )}
         <button className={styles.logoutBtn} onClick={handleLogout} title="Sair">
           Sair
         </button>
@@ -168,6 +178,8 @@ export default function App() {
           onAddCustom={addCustomExercise}
         />
       </main>
+
+      {showAdmin && <AdminPanel onClose={() => setShowAdmin(false)} />}
     </div>
   )
 }

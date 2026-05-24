@@ -49,6 +49,24 @@
   color: #6e7282;
 }
 
+.adminBtn {
+  background: none;
+  border: 1px solid #e0e2ea;
+  border-radius: 8px;
+  color: #6e7282;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px 10px;
+  transition: all 0.15s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.adminBtn:hover {
+  border-color: #1a1f36;
+  color: #1a1c28;
+}
+
 .logoutBtn {
   background: none;
   border: 1px solid #e0e2ea;
