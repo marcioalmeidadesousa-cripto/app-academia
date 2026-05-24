@@ -46,7 +46,11 @@ export default function App() {
       if (workoutRows) {
         const loaded = buildEmptyWorkouts()
         workoutRows.forEach((row) => {
-          if (loaded[row.day] !== undefined) loaded[row.day] = row.exercises
+          if (loaded[row.day] !== undefined) {
+            loaded[row.day] = (row.exercises || []).filter(
+              (e) => e && typeof e.name === 'string' && e.name.trim() !== ''
+            )
+          }
         })
         setWorkouts(loaded)
       }
