@@ -1,0 +1,154 @@
+.container {
+  margin-top: 2px;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: transparent;
+  border: 1px dashed #d0d3e0;
+  border-radius: 12px;
+  color: #6e7282;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 18px;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+
+.addButton:hover {
+  border-color: #1a1f36;
+  color: #1a1f36;
+  background: #f0f1f6;
+}
+
+.plus {
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #e0e2ea;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.searchRow {
+  display: flex;
+  gap: 8px;
+  padding: 12px 12px 8px;
+  align-items: center;
+}
+
+.searchInput {
+  flex: 1;
+  background: #edeef2;
+  border: 1px solid #d0d3e0;
+  border-radius: 8px;
+  color: #1a1c28;
+  font-size: 14px;
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.searchInput:focus {
+  border-color: #1a1f36;
+}
+
+.searchInput::placeholder {
+  color: #b0b3c4;
+}
+
+.cancelBtn {
+  background: none;
+  border: 1px solid #d0d3e0;
+  border-radius: 8px;
+  color: #6e7282;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 8px 12px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.cancelBtn:hover {
+  border-color: #9ea3b8;
+  color: #1a1c28;
+}
+
+.dropdown {
+  max-height: 280px;
+  overflow-y: auto;
+  border-top: 1px solid #edeef2;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f2f3f6;
+  color: #3a3d50;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 12px 14px;
+  text-align: left;
+  width: 100%;
+  transition: background 0.1s;
+}
+
+.option:last-child {
+  border-bottom: none;
+}
+
+.option:hover:not(:disabled) {
+  background: #f7f8fa;
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.added {
+  color: #b0b3c4;
+}
+
+.addedTag {
+  font-size: 11px;
+  color: #b0b3c4;
+  background: #edeef2;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.newOption {
+  color: #1a1f36;
+  font-weight: 500;
+  background: #f0f1f6;
+}
+
+.newOption:hover {
+  background: #e8eaf0 !important;
+}
+
+.newIcon {
+  font-size: 15px;
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+.noResults {
+  color: #b0b3c4;
+  font-size: 13px;
+  padding: 20px 14px;
+  text-align: center;
+}

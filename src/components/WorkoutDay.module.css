@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 2px 10px;
+}
+
+.dayLabel {
+  font-size: 13px;
+  color: #6e7282;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.editToggle {
+  background: none;
+  border: none;
+  color: #1a1f36;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+  letter-spacing: -0.1px;
+}
+
+.editToggle:hover {
+  background: #e8eaf0;
+}
+
+.editToggleActive {
+  color: #1a1f36;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.limitMsg {
+  font-size: 12px;
+  color: #9ea3b8;
+  text-align: center;
+  padding: 6px 0 2px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 32px 24px 16px;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 36px;
+  margin-bottom: 6px;
+  opacity: 0.35;
+}
+
+.empty p {
+  font-size: 15px;
+  color: #6e7282;
+  font-weight: 500;
+}
+
+.emptyHint {
+  font-size: 13px !important;
+  color: #9ea3b8 !important;
+  font-weight: 400 !important;
+}
+
+.emptyAddBtn {
+  background: #1a1f36;
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 24px;
+  width: 100%;
+  transition: background 0.15s;
+  letter-spacing: -0.1px;
+}
+
+.emptyAddBtn:hover {
+  background: #2c3356;
+}

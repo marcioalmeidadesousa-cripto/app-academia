@@ -1,0 +1,163 @@
+.screen {
+  min-height: 100vh;
+  background: #edeef2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px 48px;
+  gap: 28px;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoBox {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(26, 31, 54, 0.2);
+}
+
+.logoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+.appName {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1c28;
+  letter-spacing: -0.5px;
+  margin-top: 4px;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #6e7282;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e0e2ea;
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+.modeTabs {
+  display: flex;
+  background: #edeef2;
+  border-radius: 10px;
+  padding: 3px;
+  margin-bottom: 24px;
+}
+
+.modeTab {
+  flex: 1;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: #6e7282;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 12px;
+  transition: all 0.15s;
+}
+
+.modeActive {
+  background: #ffffff;
+  color: #1a1c28;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6e7282;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.input {
+  background: #edeef2;
+  border: 1px solid #d0d3e0;
+  border-radius: 10px;
+  color: #1a1c28;
+  font-size: 15px;
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+
+.input:focus {
+  border-color: #1a1f36;
+}
+
+.input::placeholder {
+  color: #b0b3c4;
+}
+
+.error {
+  font-size: 13px;
+  color: #ff3b30;
+  background: #fff2f1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 0;
+}
+
+.successMsg {
+  font-size: 13px;
+  color: #34c759;
+  background: #f0fdf4;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 0;
+}
+
+.submitBtn {
+  background: #1a1f36;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px;
+  transition: background 0.15s;
+  margin-top: 4px;
+  font-family: inherit;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #2c3356;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
