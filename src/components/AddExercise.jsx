@@ -46,8 +46,8 @@ export default function AddExercise({
     inputRef.current?.focus()
   }
 
-  function handleAddCustom() {
-    const name = onAddCustom(query)
+  async function handleAddCustom() {
+    const name = await onAddCustom(query)
     if (name) {
       onAdd(name)
       setQuery('')
@@ -58,7 +58,7 @@ export default function AddExercise({
   function handleKeyDown(e) {
     if (e.key === 'Escape') setOpen(false)
     if (e.key === 'Enter' && queryIsNew) handleAddCustom()
-    if (e.key === 'Enter' && filtered.length === 1) handleSelect(filtered[0])
+    if (e.key === 'Enter' && !queryIsNew && filtered.length === 1) handleSelect(filtered[0])
   }
 
   return (
