@@ -12,6 +12,16 @@ function EditIcon() {
   )
 }
 
+function emptySet() {
+  return { reps: '', weight: '' }
+}
+
+function formatSet(s) {
+  const r = s.reps !== '' && s.reps !== undefined ? s.reps : '—'
+  const w = s.weight !== '' && s.weight !== undefined ? s.weight : '—'
+  return { r, w }
+}
+
 export default function ExerciseCard({
   exercise,
   index,
@@ -22,40 +32,48 @@ export default function ExerciseCard({
   onMoveUp,
   onMoveDown,
 }) {
+  const sets = exercise.sets && exercise.sets.length > 0
+    ? exercise.sets
+    : [{ reps: exercise.reps ?? '', weight: exercise.weight ?? '' }]
+
   const [editing, setEditing] = useState(false)
-  const [localWeight, setLocalWeight] = useState(exercise.weight ?? '')
-  const [localReps, setLocalReps] = useState(exercise.reps ?? '')
-  const repsRef = useRef(null)
+  const [localSets, setLocalSets] = useState(sets)
+  const firstRepsRef = useRef(null)
 
   useEffect(() => {
-    if (!editing) {
-      setLocalWeight(exercise.weight ?? '')
-      setLocalReps(exercise.reps ?? '')
-    }
-  }, [exercise.weight, exercise.reps, editing])
+    if (!editing) setLocalSets(sets)
+  }, [exercise.sets, exercise.weight, exercise.reps, editing])
 
   useEffect(() => {
-    if (editing) repsRef.current?.focus()
+    if (editing) firstRepsRef.current?.focus()
   }, [editing])
 
   function handleSave() {
-    onUpdateExercise(localWeight, localReps)
+    onUpdateExercise(localSets)
     setEditing(false)
   }
 
   function handleCancel() {
-    setLocalWeight(exercise.weight ?? '')
-    setLocalReps(exercise.reps ?? '')
+    setLocalSets(sets)
     setEditing(false)
+  }
+
+  function updateLocalSet(i, field, val) {
+    setLocalSets((prev) => prev.map((s, idx) => idx === i ? { ...s, [field]: val } : s))
+  }
+
+  function addLocalSet() {
+    setLocalSets((prev) => [...prev, emptySet()])
+  }
+
+  function removeLocalSet(i) {
+    setLocalSets((prev) => prev.filter((_, idx) => idx !== i))
   }
 
   function handleKeyDown(e) {
     if (e.key === 'Enter') handleSave()
     if (e.key === 'Escape') handleCancel()
   }
-
-  const repsDisplay = exercise.reps !== '' && exercise.reps !== undefined ? exercise.reps : '—'
-  const weightDisplay = exercise.weight !== '' && exercise.weight !== undefined ? exercise.weight : '—'
 
   return (
     <div className={`${styles.card} ${editing ? styles.editingWeight : ''}`}>
@@ -67,45 +85,60 @@ export default function ExerciseCard({
         </div>
       )}
 
-      <span className={styles.name}>{exercise.name}</span>
+      <div className={styles.body}>
+        <span className={styles.name}>{exercise.name}</span>
 
-      <div className={styles.right}>
         {editing ? (
-          <>
-            <input
-              ref={repsRef}
-              className={styles.weightInput}
-              type="number"
-              min="0"
-              step="1"
-              value={localReps}
-              onChange={(e) => setLocalReps(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="0"
-            />
-            <span className={styles.xSep}>x</span>
-            <input
-              className={styles.weightInput}
-              type="number"
-              min="0"
-              step="0.5"
-              value={localWeight}
-              onChange={(e) => setLocalWeight(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="0"
-            />
-            <button className={styles.saveBtn} onClick={handleSave}>Salvar</button>
-            <button className={styles.cancelEdit} onClick={handleCancel}>✕</button>
-          </>
+          <div className={styles.setsEdit}>
+            {localSets.map((s, i) => (
+              <div key={i} className={styles.setInputRow}>
+                <input
+                  ref={i === 0 ? firstRepsRef : null}
+                  className={styles.weightInput}
+                  type="number" min="0" step="1"
+                  value={s.reps} placeholder="0"
+                  onChange={(e) => updateLocalSet(i, 'reps', e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+                <span className={styles.xSep}>x</span>
+                <input
+                  className={styles.weightInput}
+                  type="number" min="0" step="0.5"
+                  value={s.weight} placeholder="0"
+                  onChange={(e) => updateLocalSet(i, 'weight', e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+                {i > 0 && (
+                  <button className={styles.removeSetBtn} onClick={() => removeLocalSet(i)}>×</button>
+                )}
+              </div>
+            ))}
+            {localSets.length < 5 && (
+              <button className={styles.addSetInlineBtn} onClick={addLocalSet}>+ série</button>
+            )}
+            <div className={styles.editActions}>
+              <button className={styles.saveBtn} onClick={handleSave}>Salvar</button>
+              <button className={styles.cancelEdit} onClick={handleCancel}>✕</button>
+            </div>
+          </div>
         ) : (
-          <>
-            <span className={styles.weightDisplay}>
-              {repsDisplay} <span className={styles.xSep}>x</span> {weightDisplay}
-            </span>
-            <button className={styles.editBtn} onClick={() => setEditing(true)} title="Editar">
-              <EditIcon />
-            </button>
-          </>
+          <div className={styles.setsDisplay}>
+            <div className={styles.firstSetRow}>
+              <span className={styles.weightDisplay}>
+                {formatSet(sets[0]).r} <span className={styles.xSep}>x</span> {formatSet(sets[0]).w}
+              </span>
+              <button className={styles.editBtn} onClick={() => setEditing(true)} title="Editar">
+                <EditIcon />
+              </button>
+            </div>
+            {sets.slice(1).map((s, i) => (
+              <div key={i} className={styles.extraSetRow}>
+                <span className={styles.extraSetDisplay}>
+                  {formatSet(s).r} <span className={styles.xSepSmall}>x</span> {formatSet(s).w}
+                </span>
+              </div>
+            ))}
+          </div>
         )}
       </div>
 

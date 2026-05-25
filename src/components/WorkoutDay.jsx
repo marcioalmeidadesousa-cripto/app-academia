@@ -66,7 +66,7 @@ export default function WorkoutDay({
               total={exercises.length}
               editMode={editMode}
               onRemove={() => onRemove(exercise.id)}
-              onUpdateExercise={(weight, reps) => onUpdateExercise(exercise.id, weight, reps)}
+              onUpdateExercise={(sets) => onUpdateExercise(exercise.id, sets)}
               onMoveUp={() => {
                 if (index === 0) return
                 const r = [...exercises]

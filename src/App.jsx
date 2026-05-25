@@ -92,8 +92,8 @@ export default function App() {
     saveWorkout(day, updated)
   }
 
-  function updateExercise(day, id, weight, reps) {
-    const updated = workouts[day].map((e) => (e.id === id ? { ...e, weight, reps } : e))
+  function updateExercise(day, id, sets) {
+    const updated = workouts[day].map((e) => (e.id === id ? { ...e, sets } : e))
     setWorkouts((prev) => ({ ...prev, [day]: updated }))
     saveWorkout(day, updated)
   }
@@ -177,7 +177,7 @@ export default function App() {
           allExercises={allExercises}
           onAdd={(name) => addExercise(selectedDay, name)}
           onRemove={(id) => removeExercise(selectedDay, id)}
-          onUpdateExercise={(id, weight, reps) => updateExercise(selectedDay, id, weight, reps)}
+          onUpdateExercise={(id, sets) => updateExercise(selectedDay, id, sets)}
           onReorder={(exercises) => reorderExercises(selectedDay, exercises)}
           onAddCustom={addCustomExercise}
         />
