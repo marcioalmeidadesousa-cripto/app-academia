@@ -137,8 +137,34 @@
 
 .setInputRow {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 6px;
+}
+
+.inputCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.inputLabel {
+  font-size: 9px;
+  font-weight: 600;
+  color: #9ea3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  line-height: 1;
+}
+
+.xSepLabeled {
+  margin-bottom: 6px;
+}
+
+.cargaDisplay {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1c28;
 }
 
 .weightInput {

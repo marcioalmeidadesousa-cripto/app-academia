@@ -92,30 +92,39 @@ export default function ExerciseCard({
         <div className={styles.setsEdit}>
           {localSets.map((s, i) => (
             <div key={i} className={styles.setInputRow}>
-              <input
-                ref={i === 0 ? firstRepsRef : null}
-                className={styles.weightInput}
-                type="number" min="0" step="1"
-                value={s.series} placeholder="0"
-                onChange={(e) => updateLocalSet(i, 'series', e.target.value)}
-                onKeyDown={handleKeyDown}
-              />
-              <span className={styles.xSep}>x</span>
-              <input
-                className={styles.weightInput}
-                type="number" min="0" step="1"
-                value={s.reps} placeholder="0"
-                onChange={(e) => updateLocalSet(i, 'reps', e.target.value)}
-                onKeyDown={handleKeyDown}
-              />
-              <span className={styles.xSep}>x</span>
-              <input
-                className={styles.weightInput}
-                type="number" min="0" step="0.5"
-                value={s.weight} placeholder="0"
-                onChange={(e) => updateLocalSet(i, 'weight', e.target.value)}
-                onKeyDown={handleKeyDown}
-              />
+              <div className={styles.inputCol}>
+                {i === 0 && <span className={styles.inputLabel}>Séries</span>}
+                <input
+                  ref={i === 0 ? firstRepsRef : null}
+                  className={styles.weightInput}
+                  type="number" min="0" step="1"
+                  value={s.series} placeholder="0"
+                  onChange={(e) => updateLocalSet(i, 'series', e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
+              <span className={`${styles.xSep} ${i === 0 ? styles.xSepLabeled : ''}`}>x</span>
+              <div className={styles.inputCol}>
+                {i === 0 && <span className={styles.inputLabel}>Rep</span>}
+                <input
+                  className={styles.weightInput}
+                  type="number" min="0" step="1"
+                  value={s.reps} placeholder="0"
+                  onChange={(e) => updateLocalSet(i, 'reps', e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
+              <span className={`${styles.xSep} ${i === 0 ? styles.xSepLabeled : ''}`}>x</span>
+              <div className={styles.inputCol}>
+                {i === 0 && <span className={styles.inputLabel}>Carga</span>}
+                <input
+                  className={styles.weightInput}
+                  type="number" min="0" step="0.5"
+                  value={s.weight} placeholder="0"
+                  onChange={(e) => updateLocalSet(i, 'weight', e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
               {i > 0 && (
                 <button className={styles.removeSetBtn} onClick={() => removeLocalSet(i)}>×</button>
               )}
@@ -134,7 +143,7 @@ export default function ExerciseCard({
           <div className={styles.setsDisplay}>
             <div className={styles.firstSetRow}>
               <span className={styles.weightDisplay}>
-                {formatSet(sets[0]).se} <span className={styles.xSep}>x</span> {formatSet(sets[0]).r} <span className={styles.xSep}>x</span> {formatSet(sets[0]).w}
+                {formatSet(sets[0]).se} <span className={styles.xSep}>x</span> {formatSet(sets[0]).r} <span className={styles.xSep}>x</span> <span className={styles.cargaDisplay}>{formatSet(sets[0]).w}</span>
               </span>
             </div>
             {sets.slice(1).map((s, i) => (
