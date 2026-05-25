@@ -141,16 +141,22 @@ export default function ExerciseCard({
       ) : (
         <div className={styles.right}>
           <div className={styles.setsDisplay}>
-            <div className={styles.firstSetRow}>
-              <span className={styles.weightDisplay}>
-                {formatSet(sets[0]).se} <span className={styles.xSep}>x</span> {formatSet(sets[0]).r} <span className={styles.xSep}>x</span> <span className={styles.cargaDisplay}>{formatSet(sets[0]).w}</span>
-              </span>
-            </div>
-            {sets.slice(1).map((s, i) => (
-              <div key={i} className={styles.extraSetRow}>
-                <span className={styles.extraSetDisplay}>
-                  {formatSet(s).se} <span className={styles.xSepSmall}>x</span> {formatSet(s).r} <span className={styles.xSepSmall}>x</span> {formatSet(s).w}
-                </span>
+            {sets.map((s, i) => (
+              <div key={i} className={styles.setDisplayRow}>
+                <div className={styles.displayCol}>
+                  {i === 0 && <span className={styles.displayLabel}>Séries</span>}
+                  <span className={styles.displayBox}>{formatSet(s).se}</span>
+                </div>
+                <span className={`${styles.xSep} ${i === 0 ? styles.xSepLabeled : ''}`}>x</span>
+                <div className={styles.displayCol}>
+                  {i === 0 && <span className={styles.displayLabel}>Rep</span>}
+                  <span className={styles.displayBox}>{formatSet(s).r}</span>
+                </div>
+                <span className={`${styles.xSep} ${i === 0 ? styles.xSepLabeled : ''}`}>x</span>
+                <div className={styles.displayCol}>
+                  {i === 0 && <span className={styles.displayLabel}>Carga</span>}
+                  <span className={styles.displayBox}>{formatSet(s).w}</span>
+                </div>
               </div>
             ))}
           </div>

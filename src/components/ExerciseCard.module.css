@@ -72,44 +72,50 @@
 .setsDisplay {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   align-items: flex-end;
 }
 
-.firstSetRow {
+.setDisplayRow {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  gap: 6px;
 }
 
-.weightDisplay {
+.displayCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.displayLabel {
+  font-size: 9px;
+  font-weight: 600;
+  color: #9ea3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  line-height: 1;
+}
+
+.displayBox {
+  background: #edeef2;
+  border: 1px solid #d0d3e0;
+  border-radius: 7px;
+  color: #1a1c28;
   font-size: 14px;
   font-weight: 600;
-  color: #3a3d50;
+  width: 52px;
+  padding: 5px 7px;
+  text-align: center;
+  letter-spacing: -0.3px;
   white-space: nowrap;
-  letter-spacing: -0.2px;
 }
 
 .xSep {
   font-size: 11px;
   font-weight: 500;
   color: #9ea3b8;
-  margin: 0 2px;
-}
-
-.extraSetRow {
-  padding-left: 2px;
-}
-
-.extraSetDisplay {
-  font-size: 12px;
-  font-weight: 500;
-  color: #9ea3b8;
-  white-space: nowrap;
-}
-
-.xSepSmall {
-  font-size: 10px;
-  color: #b8bbc8;
   margin: 0 2px;
 }
 
