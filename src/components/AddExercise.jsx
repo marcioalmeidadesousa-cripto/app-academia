@@ -12,15 +12,17 @@ export default function AddExercise({
   const inputRef = useRef(null)
   const containerRef = useRef(null)
 
+  function normalize(str) {
+    return str.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+  }
+
   const filtered = query.trim()
-    ? allExercises.filter((ex) =>
-        ex.toLowerCase().includes(query.toLowerCase())
-      )
+    ? allExercises.filter((ex) => normalize(ex).includes(normalize(query)))
     : allExercises
 
   const queryIsNew =
     query.trim().length > 0 &&
-    !allExercises.some((ex) => ex.toLowerCase() === query.trim().toLowerCase())
+    !allExercises.some((ex) => normalize(ex) === normalize(query.trim()))
 
   useEffect(() => {
     if (open) {
