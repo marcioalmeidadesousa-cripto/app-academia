@@ -13,13 +13,14 @@ function EditIcon() {
 }
 
 function emptySet() {
-  return { reps: '', weight: '' }
+  return { series: '', reps: '', weight: '' }
 }
 
 function formatSet(s) {
+  const se = s.series !== '' && s.series !== undefined ? s.series : '—'
   const r = s.reps !== '' && s.reps !== undefined ? s.reps : '—'
   const w = s.weight !== '' && s.weight !== undefined ? s.weight : '—'
-  return { r, w }
+  return { se, r, w }
 }
 
 export default function ExerciseCard({
@@ -34,7 +35,7 @@ export default function ExerciseCard({
 }) {
   const sets = exercise.sets && exercise.sets.length > 0
     ? exercise.sets
-    : [{ reps: exercise.reps ?? '', weight: exercise.weight ?? '' }]
+    : [{ series: exercise.series ?? '', reps: exercise.reps ?? '', weight: exercise.weight ?? '' }]
 
   const [editing, setEditing] = useState(false)
   const [localSets, setLocalSets] = useState(sets)
@@ -95,6 +96,14 @@ export default function ExerciseCard({
                 ref={i === 0 ? firstRepsRef : null}
                 className={styles.weightInput}
                 type="number" min="0" step="1"
+                value={s.series} placeholder="0"
+                onChange={(e) => updateLocalSet(i, 'series', e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              <span className={styles.xSep}>x</span>
+              <input
+                className={styles.weightInput}
+                type="number" min="0" step="1"
                 value={s.reps} placeholder="0"
                 onChange={(e) => updateLocalSet(i, 'reps', e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -125,13 +134,13 @@ export default function ExerciseCard({
           <div className={styles.setsDisplay}>
             <div className={styles.firstSetRow}>
               <span className={styles.weightDisplay}>
-                {formatSet(sets[0]).r} <span className={styles.xSep}>x</span> {formatSet(sets[0]).w}
+                {formatSet(sets[0]).se} <span className={styles.xSep}>x</span> {formatSet(sets[0]).r} <span className={styles.xSep}>x</span> {formatSet(sets[0]).w}
               </span>
             </div>
             {sets.slice(1).map((s, i) => (
               <div key={i} className={styles.extraSetRow}>
                 <span className={styles.extraSetDisplay}>
-                  {formatSet(s).r} <span className={styles.xSepSmall}>x</span> {formatSet(s).w}
+                  {formatSet(s).se} <span className={styles.xSepSmall}>x</span> {formatSet(s).r} <span className={styles.xSepSmall}>x</span> {formatSet(s).w}
                 </span>
               </div>
             ))}
