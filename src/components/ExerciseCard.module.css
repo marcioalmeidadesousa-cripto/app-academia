@@ -73,12 +73,19 @@
 }
 
 .weightDisplay {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: #3a3d50;
-  min-width: 24px;
   text-align: right;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+
+.xSep {
+  font-size: 12px;
+  font-weight: 500;
+  color: #9ea3b8;
+  margin: 0 2px;
 }
 
 .editBtn {

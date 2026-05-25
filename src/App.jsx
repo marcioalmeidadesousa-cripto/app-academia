@@ -80,7 +80,7 @@ export default function App() {
   function addExercise(day, name) {
     const exists = workouts[day].some((e) => e.name.toLowerCase() === name.toLowerCase())
     if (exists) return
-    const entry = { id: crypto.randomUUID(), name, weight: '' }
+    const entry = { id: crypto.randomUUID(), name, weight: '', reps: '' }
     const updated = [...workouts[day], entry]
     setWorkouts((prev) => ({ ...prev, [day]: updated }))
     saveWorkout(day, updated)
@@ -92,8 +92,8 @@ export default function App() {
     saveWorkout(day, updated)
   }
 
-  function updateWeight(day, id, weight) {
-    const updated = workouts[day].map((e) => (e.id === id ? { ...e, weight } : e))
+  function updateExercise(day, id, weight, reps) {
+    const updated = workouts[day].map((e) => (e.id === id ? { ...e, weight, reps } : e))
     setWorkouts((prev) => ({ ...prev, [day]: updated }))
     saveWorkout(day, updated)
   }
@@ -177,7 +177,7 @@ export default function App() {
           allExercises={allExercises}
           onAdd={(name) => addExercise(selectedDay, name)}
           onRemove={(id) => removeExercise(selectedDay, id)}
-          onUpdateWeight={(id, weight) => updateWeight(selectedDay, id, weight)}
+          onUpdateExercise={(id, weight, reps) => updateExercise(selectedDay, id, weight, reps)}
           onReorder={(exercises) => reorderExercises(selectedDay, exercises)}
           onAddCustom={addCustomExercise}
         />

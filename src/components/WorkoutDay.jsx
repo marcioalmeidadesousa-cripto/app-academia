@@ -20,7 +20,7 @@ export default function WorkoutDay({
   allExercises,
   onAdd,
   onRemove,
-  onUpdateWeight,
+  onUpdateExercise,
   onReorder,
   onAddCustom,
 }) {
@@ -66,7 +66,7 @@ export default function WorkoutDay({
               total={exercises.length}
               editMode={editMode}
               onRemove={() => onRemove(exercise.id)}
-              onUpdateWeight={(weight) => onUpdateWeight(exercise.id, weight)}
+              onUpdateExercise={(weight, reps) => onUpdateExercise(exercise.id, weight, reps)}
               onMoveUp={() => {
                 if (index === 0) return
                 const r = [...exercises]
