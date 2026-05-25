@@ -1,6 +1,6 @@
 .card {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   background: #ffffff;
   border: 1px solid #e0e2ea;
@@ -48,14 +48,6 @@
   line-height: 1.2;
 }
 
-.body {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
 .name {
   font-size: 14px;
   font-weight: 500;
@@ -68,16 +60,23 @@
 
 /* --- display mode --- */
 
+.right {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
 .setsDisplay {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  align-items: flex-end;
 }
 
 .firstSetRow {
   display: flex;
   align-items: center;
-  gap: 6px;
 }
 
 .weightDisplay {

@@ -85,51 +85,48 @@ export default function ExerciseCard({
         </div>
       )}
 
-      <div className={styles.body}>
-        <span className={styles.name}>{exercise.name}</span>
+      <span className={styles.name}>{exercise.name}</span>
 
-        {editing ? (
-          <div className={styles.setsEdit}>
-            {localSets.map((s, i) => (
-              <div key={i} className={styles.setInputRow}>
-                <input
-                  ref={i === 0 ? firstRepsRef : null}
-                  className={styles.weightInput}
-                  type="number" min="0" step="1"
-                  value={s.reps} placeholder="0"
-                  onChange={(e) => updateLocalSet(i, 'reps', e.target.value)}
-                  onKeyDown={handleKeyDown}
-                />
-                <span className={styles.xSep}>x</span>
-                <input
-                  className={styles.weightInput}
-                  type="number" min="0" step="0.5"
-                  value={s.weight} placeholder="0"
-                  onChange={(e) => updateLocalSet(i, 'weight', e.target.value)}
-                  onKeyDown={handleKeyDown}
-                />
-                {i > 0 && (
-                  <button className={styles.removeSetBtn} onClick={() => removeLocalSet(i)}>×</button>
-                )}
-              </div>
-            ))}
-            {localSets.length < 5 && (
-              <button className={styles.addSetInlineBtn} onClick={addLocalSet}>+ série</button>
-            )}
-            <div className={styles.editActions}>
-              <button className={styles.saveBtn} onClick={handleSave}>Salvar</button>
-              <button className={styles.cancelEdit} onClick={handleCancel}>✕</button>
+      {editing ? (
+        <div className={styles.setsEdit}>
+          {localSets.map((s, i) => (
+            <div key={i} className={styles.setInputRow}>
+              <input
+                ref={i === 0 ? firstRepsRef : null}
+                className={styles.weightInput}
+                type="number" min="0" step="1"
+                value={s.reps} placeholder="0"
+                onChange={(e) => updateLocalSet(i, 'reps', e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              <span className={styles.xSep}>x</span>
+              <input
+                className={styles.weightInput}
+                type="number" min="0" step="0.5"
+                value={s.weight} placeholder="0"
+                onChange={(e) => updateLocalSet(i, 'weight', e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              {i > 0 && (
+                <button className={styles.removeSetBtn} onClick={() => removeLocalSet(i)}>×</button>
+              )}
             </div>
+          ))}
+          {localSets.length < 5 && (
+            <button className={styles.addSetInlineBtn} onClick={addLocalSet}>+ série</button>
+          )}
+          <div className={styles.editActions}>
+            <button className={styles.saveBtn} onClick={handleSave}>Salvar</button>
+            <button className={styles.cancelEdit} onClick={handleCancel}>✕</button>
           </div>
-        ) : (
+        </div>
+      ) : (
+        <div className={styles.right}>
           <div className={styles.setsDisplay}>
             <div className={styles.firstSetRow}>
               <span className={styles.weightDisplay}>
                 {formatSet(sets[0]).r} <span className={styles.xSep}>x</span> {formatSet(sets[0]).w}
               </span>
-              <button className={styles.editBtn} onClick={() => setEditing(true)} title="Editar">
-                <EditIcon />
-              </button>
             </div>
             {sets.slice(1).map((s, i) => (
               <div key={i} className={styles.extraSetRow}>
@@ -139,8 +136,11 @@ export default function ExerciseCard({
               </div>
             ))}
           </div>
-        )}
-      </div>
+          <button className={styles.editBtn} onClick={() => setEditing(true)} title="Editar">
+            <EditIcon />
+          </button>
+        </div>
+      )}
 
       {editMode && (
         <button className={styles.removeBtn} onClick={onRemove} title="Remover">×</button>
