@@ -48,91 +48,68 @@
   line-height: 1.2;
 }
 
-.cardMain {
+.name {
   flex: 1;
   min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.name {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   color: #1a1c28;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   letter-spacing: -0.1px;
-  text-align: center;
 }
 
 /* --- display mode --- */
 
 .right {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
-  width: 100%;
+  flex-shrink: 0;
 }
 
 .setsDisplay {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  flex: 1;
-  min-width: 0;
-}
-
-.setDisplayRow {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-  width: 100%;
-}
-
-.displayCol {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 2px;
-  flex: 1;
-  min-width: 0;
+  align-items: flex-end;
 }
 
-.displayLabel {
-  font-size: 9px;
+.firstSetRow {
+  display: flex;
+  align-items: center;
+}
+
+.weightDisplay {
+  font-size: 14px;
   font-weight: 600;
-  color: #9ea3b8;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  line-height: 1;
-}
-
-.displayBox {
-  background: #edeef2;
-  border: 1px solid #d0d3e0;
-  border-radius: 7px;
-  color: #1a1c28;
-  font-size: 13px;
-  font-weight: 600;
-  width: 100%;
-  padding: 5px 6px;
-  text-align: center;
-  letter-spacing: -0.3px;
-  box-sizing: border-box;
-}
-
-.displayBoxCarga {
-  background: #e3f1fb;
-  border: 1px solid #7bbfea;
-  color: #1a4060;
+  color: #3a3d50;
+  white-space: nowrap;
+  letter-spacing: -0.2px;
 }
 
 .xSep {
   font-size: 11px;
   font-weight: 500;
   color: #9ea3b8;
+  margin: 0 2px;
+}
+
+.extraSetRow {
+  padding-left: 2px;
+}
+
+.extraSetDisplay {
+  font-size: 12px;
+  font-weight: 500;
+  color: #9ea3b8;
+  white-space: nowrap;
+}
+
+.xSepSmall {
+  font-size: 10px;
+  color: #b8bbc8;
   margin: 0 2px;
 }
 
@@ -156,14 +133,12 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  width: 100%;
 }
 
 .setInputRow {
   display: flex;
   align-items: flex-end;
   gap: 6px;
-  width: 100%;
 }
 
 .inputCol {
@@ -171,8 +146,6 @@
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  flex: 1;
-  min-width: 0;
 }
 
 .inputLabel {
@@ -199,15 +172,14 @@
   border: 1px solid #d0d3e0;
   border-radius: 7px;
   color: #1a1c28;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  width: 100%;
-  padding: 5px 6px;
-  text-align: center;
+  width: 52px;
+  padding: 5px 7px;
+  text-align: right;
   outline: none;
   letter-spacing: -0.3px;
   font-family: inherit;
-  box-sizing: border-box;
 }
 
 .weightInputCarga {
