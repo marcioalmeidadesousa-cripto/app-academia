@@ -86,6 +86,7 @@ export default function ExerciseCard({
         </div>
       )}
 
+      <div className={styles.cardMain}>
       <span className={styles.name}>{exercise.name}</span>
 
       {editing ? (
@@ -165,6 +166,7 @@ export default function ExerciseCard({
           </button>
         </div>
       )}
+      </div>
 
       {editMode && (
         <button className={styles.removeBtn} onClick={onRemove} title="Remover">×</button>
