@@ -64,6 +64,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   letter-spacing: -0.1px;
+  text-align: center;
 }
 
 /* --- display mode --- */
@@ -110,11 +111,17 @@
   color: #1a1c28;
   font-size: 13px;
   font-weight: 600;
-  width: 42px;
-  padding: 4px 5px;
+  width: 56px;
+  padding: 5px 6px;
   text-align: center;
   letter-spacing: -0.3px;
   white-space: nowrap;
+}
+
+.displayBoxCarga {
+  background: #e3f1fb;
+  border: 1px solid #7bbfea;
+  color: #1a4060;
 }
 
 .xSep {
@@ -185,12 +192,18 @@
   color: #1a1c28;
   font-size: 13px;
   font-weight: 600;
-  width: 42px;
-  padding: 4px 5px;
+  width: 56px;
+  padding: 5px 6px;
   text-align: right;
   outline: none;
   letter-spacing: -0.3px;
   font-family: inherit;
+}
+
+.weightInputCarga {
+  background: #e3f1fb;
+  border-color: #7bbfea;
+  color: #1a4060;
 }
 
 .weightInput:focus { border-color: #4A9EDB; }

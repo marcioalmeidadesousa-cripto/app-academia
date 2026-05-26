@@ -119,7 +119,7 @@ export default function ExerciseCard({
               <div className={styles.inputCol}>
                 {i === 0 && <span className={styles.inputLabel}>Carga</span>}
                 <input
-                  className={styles.weightInput}
+                  className={`${styles.weightInput} ${styles.weightInputCarga}`}
                   type="number" min="0" step="0.5"
                   value={s.weight} placeholder="0"
                   onChange={(e) => updateLocalSet(i, 'weight', e.target.value)}
@@ -156,7 +156,7 @@ export default function ExerciseCard({
                 <span className={`${styles.xSep} ${i === 0 ? styles.xSepLabeled : ''}`}>x</span>
                 <div className={styles.displayCol}>
                   {i === 0 && <span className={styles.displayLabel}>Carga</span>}
-                  <span className={styles.displayBox}>{formatSet(s).w}</span>
+                  <span className={`${styles.displayBox} ${styles.displayBoxCarga}`}>{formatSet(s).w}</span>
                 </div>
               </div>
             ))}
