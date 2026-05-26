@@ -143,7 +143,7 @@ export default function ExerciseCard({
           <div className={styles.setsDisplay}>
             <div className={styles.firstSetRow}>
               <span className={styles.weightDisplay}>
-                {formatSet(sets[0]).se} <span className={styles.xSep}>x</span> {formatSet(sets[0]).r} <span className={styles.xSep}>x</span> <span className={styles.cargaDisplay}>{formatSet(sets[0]).w}</span>
+                {formatSet(sets[0]).se} <span className={styles.xSep}>x</span> {formatSet(sets[0]).r} <span className={styles.xSep}>x</span> <span className={styles.cargaDisplay}>{formatSet(sets[0]).w} kg</span>
               </span>
             </div>
             {sets.slice(1).map((s, i) => (
