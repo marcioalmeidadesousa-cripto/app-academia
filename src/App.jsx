@@ -12,6 +12,13 @@ import styles from './App.module.css'
 const DAYS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
 const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL
 
+function getGreeting() {
+  const h = new Date().getHours()
+  if (h < 12) return 'Bom dia'
+  if (h < 18) return 'Boa tarde'
+  return 'Boa noite'
+}
+
 function buildEmptyWorkouts() {
   return DAYS.reduce((acc, day) => ({ ...acc, [day]: [] }), {})
 }
@@ -147,6 +154,7 @@ export default function App() {
   }
 
   const isAdmin = user?.email === ADMIN_EMAIL
+  const userName = user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email?.split('@')[0] || ''
 
   return (
     <div className={styles.app}>
@@ -156,7 +164,7 @@ export default function App() {
         </div>
         <div className={styles.headerText}>
           <h1 className={styles.title}>MSA Academia</h1>
-          <span className={styles.subtitle}>Meu Treino</span>
+          <span className={styles.subtitle}>{getGreeting()}, {userName}!</span>
         </div>
         {isAdmin && (
           <button className={styles.adminBtn} onClick={() => setShowAdmin(true)} title="Administração">
